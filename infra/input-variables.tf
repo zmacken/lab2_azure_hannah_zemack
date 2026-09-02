@@ -13,9 +13,9 @@ variable "project_name" {
 }
 
 variable "acr_name" {
-   default = "lab2-awf6che5hvf5ayh7"
+   default = "lab2"
 }
 
 variable "image_tag" {
    default = "latest"
-}
+} 
