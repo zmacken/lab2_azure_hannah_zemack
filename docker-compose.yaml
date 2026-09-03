@@ -1,25 +1,25 @@
 services:
-  backend:
+  backend: # Define the backend service
     container_name: backend
     platform: linux/amd64
-    build:
+    build: # Define the build context and Dockerfile for the backend service
       context: .
       dockerfile: dockerfiles/backend.dockerfile
-    ports:
+    ports: # Map the host port 8000 to the container port 8000 for the backend service
       - "8000:8000"
-    image: ${ACR_LOGIN_SERVER}/backend:${IMAGE_TAG:-latest}
+    image: ${ACR_LOGIN_SERVER}/backend:${IMAGE_TAG:-latest} # Define the image name for the backend service using the Azure Container Registry login server and an optional image tag (defaulting to "latest" if not provided)
 
-  frontend:
+  frontend: # Define the frontend service
     container_name: frontend
     platform: linux/amd64
-    build:
+    build: # Define the build context and Dockerfile for the frontend service
       context: .
       dockerfile: dockerfiles/frontend.dockerfile
-    ports:
-      - "8501:8501"
+    ports: # Map the host port 8501 to the container port 8501 for the frontend service
+      - "8501:8501" 
     environment:
       BACKEND_URL: http://backend:8000
-    image: ${ACR_LOGIN_SERVER}/frontend:${IMAGE_TAG:-latest}
+    image: ${ACR_LOGIN_SERVER}/frontend:${IMAGE_TAG:-latest} # Define the image name for the frontend service using the Azure Container Registry login server and an optional image tag (defaulting to "latest" if not provided)
 
 
 
