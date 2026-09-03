@@ -1,15 +1,19 @@
+
+# Create an Azure Container App Environment
 resource "azurerm_container_app_environment" "env" {
     name = "${var.project_name}-cae"
     resource_group_name = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
 }
 
+# Create an Azure Container App for the API
 resource "azurerm_container_app" "api" {
     name = "${var.project_name}-api"
     resource_group_name = azurerm_resource_group.rg.name
     container_app_environment_id = azurerm_container_app_environment.env.id
     revision_mode = "Single"
-
+    
+    # Define the container template for the API
     template{
         container {
             name = "api"
@@ -19,6 +23,7 @@ resource "azurerm_container_app" "api" {
         }
     }
 
+    # Define the ingress settings for the API
     ingress {
         external_enabled = true
         target_port = 8000

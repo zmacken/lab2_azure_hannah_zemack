@@ -1,3 +1,4 @@
+# Create an Azure Container Registry
 resource "azurerm_container_registry" "acr" {
     name = "${var.acr_name}${random_string.suffix.result}"
     location = azurerm_resource_group.rg.location

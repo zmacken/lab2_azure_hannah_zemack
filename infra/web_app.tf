@@ -1,3 +1,6 @@
+# This file defines an Azure Service Plan and a Linux Web App resource using the azurerm provider.
+# The Service Plan is used to host the Web App, and the Web App is configured to use a Docker image from the Azure Container Registry (ACR) with a managed identity for authentication.
+
 resource "azurerm_service_plan" "asp" {
   name                = "${var.project_name}-asp"
   resource_group_name = azurerm_resource_group.rg.name

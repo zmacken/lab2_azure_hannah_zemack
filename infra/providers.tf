@@ -1,3 +1,4 @@
+# This file defines the Terraform provider configuration for Azure Resource Manager (azurerm).
 terraform{
     required_providers{
         azurerm = {
