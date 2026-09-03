@@ -17,7 +17,7 @@ resource "azurerm_container_app" "api" {
     template{
         container {
             name = "api"
-            image = "${azurerm_container_registry.acr.login_server}/${var.project_name}-api:${var.image_tag}"
+            image = "mcr.microsoft.com/k8se/quickstart:latest"
             cpu = 1.0
             memory = "2Gi"
         }
